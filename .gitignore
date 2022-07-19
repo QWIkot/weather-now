@@ -88,3 +88,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+/WeatherNow.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+/WeatherNow.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+/WeatherNow/.DS_Store
