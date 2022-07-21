@@ -21,6 +21,9 @@
 		2FBE11142784E00E006C3B71 /* MainOfferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBE11132784E00E006C3B71 /* MainOfferModel.swift */; };
 		8B1143062886B24E004B7719 /* sunny.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B1143052886B24E004B7719 /* sunny.json */; };
 		8B1143082886B25F004B7719 /* 61302-weather-icon.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B1143072886B25F004B7719 /* 61302-weather-icon.json */; };
+		8B8CF2262889E5B9009F6C5D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF2252889E5B9009F6C5D /* Cities.swift */; };
+		8B8CF2282889E5F6009F6C5D /* CityNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF2272889E5F6009F6C5D /* CityNameModel.swift */; };
+		8B8CF22A2889E60F009F6C5D /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B8CF2292889E60F009F6C5D /* cities.json */; };
 		E69FB2268D78658F1CAA5A37 /* Pods_WeatherNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDED3AD4ED5C8F0FA51C2CB /* Pods_WeatherNow.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,9 @@
 		5D34961D416AE18B79992AD3 /* Pods-WeatherNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherNow.debug.xcconfig"; path = "Target Support Files/Pods-WeatherNow/Pods-WeatherNow.debug.xcconfig"; sourceTree = "<group>"; };
 		8B1143052886B24E004B7719 /* sunny.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sunny.json; sourceTree = "<group>"; };
 		8B1143072886B25F004B7719 /* 61302-weather-icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "61302-weather-icon.json"; sourceTree = "<group>"; };
+		8B8CF2252889E5B9009F6C5D /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		8B8CF2272889E5F6009F6C5D /* CityNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNameModel.swift; sourceTree = "<group>"; };
+		8B8CF2292889E60F009F6C5D /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		2F1CC7C5277A11FE0037B9F4 /* WeatherNow */ = {
 			isa = PBXGroup;
 			children = (
+				8B8CF2242889E58D009F6C5D /* CityModel */,
 				8B1143042886B238004B7719 /* AnimationJSON */,
 				2FBE110C277DDDFD006C3B71 /* OfferModel */,
 				2FBE1107277DDC81006C3B71 /* NetworkManager */,
@@ -128,6 +135,16 @@
 				8B1143052886B24E004B7719 /* sunny.json */,
 			);
 			path = AnimationJSON;
+			sourceTree = "<group>";
+		};
+		8B8CF2242889E58D009F6C5D /* CityModel */ = {
+			isa = PBXGroup;
+			children = (
+				8B8CF2252889E5B9009F6C5D /* Cities.swift */,
+				8B8CF2272889E5F6009F6C5D /* CityNameModel.swift */,
+				8B8CF2292889E60F009F6C5D /* cities.json */,
+			);
+			path = CityModel;
 			sourceTree = "<group>";
 		};
 		C59893A2A311236E5546D428 /* Pods */ = {
@@ -198,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8CF22A2889E60F009F6C5D /* cities.json in Resources */,
 				8B1143082886B25F004B7719 /* 61302-weather-icon.json in Resources */,
 				2F1CC7D3277A12050037B9F4 /* LaunchScreen.storyboard in Resources */,
 				2F1CC7D0277A12050037B9F4 /* Assets.xcassets in Resources */,
@@ -255,12 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8CF2282889E5F6009F6C5D /* CityNameModel.swift in Sources */,
 				2FBE11112784DF22006C3B71 /* ListOfferModel.swift in Sources */,
 				2FBE1109277DDCAA006C3B71 /* NetworkManager.swift in Sources */,
 				2F3474F627A41997003330B8 /* WindOfferModel.swift in Sources */,
 				2F2DD43D27A3EF4D0057CF99 /* WeatherOfferModel.swift in Sources */,
 				2FBE11142784E00E006C3B71 /* MainOfferModel.swift in Sources */,
 				2F1CC7CB277A11FE0037B9F4 /* ViewController.swift in Sources */,
+				8B8CF2262889E5B9009F6C5D /* Cities.swift in Sources */,
 				2F780DE2278F4C4500A30E27 /* CityModel.swift in Sources */,
 				2FBE110E277DDE16006C3B71 /* OfferModel.swift in Sources */,
 				2F1CC7C7277A11FE0037B9F4 /* AppDelegate.swift in Sources */,

@@ -45,6 +45,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06G-0Q-Di3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hnu-rX-Sna">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-Xe-7Hs">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
@@ -73,6 +81,26 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qj5-5I-dTP">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="NWx-Ft-e4v">
+                                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NWx-Ft-e4v" id="sYH-rB-NYs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UAm-BZ-L5U"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KoG-xU-AbZ"/>
+                                                </connections>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -81,14 +109,18 @@
                                             <constraint firstAttribute="trailing" secondItem="vGi-Mn-Y02" secondAttribute="trailing" id="8Yi-MX-40J"/>
                                             <constraint firstAttribute="trailing" secondItem="Z3c-ar-Vrg" secondAttribute="trailing" id="F2o-ny-Oki"/>
                                             <constraint firstItem="0Zs-7H-Xde" firstAttribute="leading" secondItem="QYb-aH-AHG" secondAttribute="leading" id="KTy-C2-C8j"/>
+                                            <constraint firstItem="qj5-5I-dTP" firstAttribute="leading" secondItem="QYb-aH-AHG" secondAttribute="leading" id="KmZ-Aa-GbI"/>
                                             <constraint firstAttribute="height" constant="250" id="PUA-qn-wSB"/>
                                             <constraint firstItem="vGi-Mn-Y02" firstAttribute="leading" secondItem="QYb-aH-AHG" secondAttribute="leading" id="SFj-0v-otb"/>
                                             <constraint firstItem="Z3c-ar-Vrg" firstAttribute="top" secondItem="SmK-lF-9FS" secondAttribute="bottom" constant="20" id="WmD-zP-Jsk"/>
                                             <constraint firstItem="SmK-lF-9FS" firstAttribute="top" secondItem="QYb-aH-AHG" secondAttribute="top" constant="10" id="Xt1-be-rMB"/>
                                             <constraint firstAttribute="trailing" secondItem="0Zs-7H-Xde" secondAttribute="trailing" id="ZEF-P2-dUK"/>
                                             <constraint firstAttribute="trailing" secondItem="SmK-lF-9FS" secondAttribute="trailing" id="bLZ-7v-l9q"/>
+                                            <constraint firstAttribute="bottom" secondItem="qj5-5I-dTP" secondAttribute="bottom" id="cHJ-8L-hCx"/>
                                             <constraint firstItem="SmK-lF-9FS" firstAttribute="leading" secondItem="QYb-aH-AHG" secondAttribute="leading" id="fsn-YE-WFa"/>
                                             <constraint firstAttribute="bottom" secondItem="0Zs-7H-Xde" secondAttribute="bottom" id="mrt-dD-y5G"/>
+                                            <constraint firstItem="qj5-5I-dTP" firstAttribute="top" secondItem="QYb-aH-AHG" secondAttribute="top" id="qFX-t1-eb6"/>
+                                            <constraint firstAttribute="trailing" secondItem="qj5-5I-dTP" secondAttribute="trailing" id="qOh-jZ-sjH"/>
                                             <constraint firstItem="Z3c-ar-Vrg" firstAttribute="leading" secondItem="QYb-aH-AHG" secondAttribute="leading" id="ugw-d6-OCL"/>
                                         </constraints>
                                     </view>
@@ -614,10 +646,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="06G-0Q-Di3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2dD-dX-Zzk"/>
                             <constraint firstItem="wKT-Xe-7Hs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9F4-d4-dFx"/>
                             <constraint firstItem="w2m-C8-JGa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BCQ-Rn-Wu4"/>
+                            <constraint firstItem="06G-0Q-Di3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J5C-X1-FzK"/>
                             <constraint firstItem="w2m-C8-JGa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uhf-Os-L3H"/>
                             <constraint firstItem="wKT-Xe-7Hs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Ymt-Yf-KHe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="06G-0Q-Di3" secondAttribute="trailing" id="aFk-cy-JQt"/>
+                            <constraint firstAttribute="bottom" secondItem="06G-0Q-Di3" secondAttribute="bottom" id="cSN-9B-go1"/>
                             <constraint firstAttribute="bottom" secondItem="wKT-Xe-7Hs" secondAttribute="bottom" id="f8K-08-jSc"/>
                             <constraint firstItem="QYb-aH-AHG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="g5d-OR-yU3"/>
                             <constraint firstItem="w2m-C8-JGa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mn1-CS-1F1"/>
@@ -645,6 +681,7 @@
                     <connections>
                         <outlet property="blurDayView" destination="2qU-fi-Vdk" id="rSf-VA-wxD"/>
                         <outlet property="blurTimeView" destination="Ln2-Um-40R" id="YvZ-Tq-bLd"/>
+                        <outlet property="blurView" destination="06G-0Q-Di3" id="l23-ef-cZr"/>
                         <outlet property="cityLabel" destination="SmK-lF-9FS" id="GOj-Px-U7y"/>
                         <outlet property="cityView" destination="QYb-aH-AHG" id="dfh-ZC-D9a"/>
                         <outlet property="dataDay1Label" destination="gec-y4-pvs" id="T6R-Ix-s3G"/>
@@ -672,6 +709,7 @@
                         <outlet property="menuImageView" destination="w2m-C8-JGa" id="Wht-FE-0jD"/>
                         <outlet property="pressureLabel" destination="gv1-Xd-cYC" id="QHQ-mp-Jwt"/>
                         <outlet property="pressureNameLabel" destination="B1P-4H-cmZ" id="3x7-l5-7ID"/>
+                        <outlet property="tableView" destination="qj5-5I-dTP" id="EQp-1Q-zOm"/>
                         <outlet property="temp1Label" destination="i6C-0J-bzx" id="4Z0-rb-Y9N"/>
                         <outlet property="temp2Label" destination="QCA-3m-DB4" id="yEL-HI-Q2p"/>
                         <outlet property="temp3Label" destination="9M1-IF-nAC" id="nUF-3B-LFR"/>

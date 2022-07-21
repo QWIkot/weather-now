@@ -14,6 +14,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
     @IBOutlet private weak var blurTimeView: UIVisualEffectView!
     @IBOutlet private weak var blurDayView: UIVisualEffectView!
     @IBOutlet private weak var dayView: UIView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var blurView: UIVisualEffectView!
     
     @IBOutlet private weak var time1Label: UILabel!
     @IBOutlet private weak var time2Label: UILabel!
@@ -63,16 +65,20 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
     
     //MARK: - let
     private let locationManager = CLLocationManager()
+    let searchController = UISearchController(searchResultsController: nil)
     
     //MARK: - var
     var offerModel: OfferModel?
     var timer = Timer()
     var animationView = AnimationView()
+    var autoComletePossibilities = [String]()
+    var autoComlete = [String]()
     
     //MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
+        self.jsonAutoParts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +94,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
         super.viewDidAppear(animated)
         self.animationLottie(name: "61302-weather-icon", mode: .scaleAspectFill, frame: self.cityView.bounds, view: self.cityView)
     }
-    
     
     //MARK: - IBActions
     @IBAction func geoLacationButtonPressed(_ sender: UIButton) {
@@ -128,10 +133,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
         }
     }
     
-   private func setupNavigationBar() {
+    private func setupNavigationBar() {
         self.navigationItem.title = "Weather Now"
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -149,6 +154,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
                             self.offerModel = model
                         }
                         DispatchQueue.main.async {
+                            searchController.searchBar.resignFirstResponder()
+                            searchController.searchBar.text = ""
+                            self.tableView.isHidden = true
+                            self.blurView.alpha = 0
                             self.stopAnimationLottie()
                             self.weatherToday()
                             self.weatherTime()
@@ -172,10 +181,36 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
         view.addSubview(animationView)
     }
     
-    
     private func stopAnimationLottie() {
         self.animationView.stop()
         self.animationView.removeFromSuperview()
+    }
+    
+    private func searchAutocomleteEntriesWithSubstring(_ substring: String) {
+        autoComlete.removeAll(keepingCapacity: false)
+        for key in autoComletePossibilities {
+            let myString:NSString = key as NSString
+            let substringRange:NSRange = myString.range(of: substring)
+            if (substringRange.location == 0) {
+                autoComlete.append(key)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    private func jsonAutoParts() {
+        guard let path = Bundle.main.path(forResource: "cities", ofType: "json") else {
+            return }
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let object = try JSONDecoder().decode(Cities.self, from: data)
+            print(object)
+            for city in object.city {
+                autoComletePossibilities.append(city.name)
+            }
+        } catch {
+            print("Data err")
+        }
     }
     
     private func weatherToday() {
@@ -286,8 +321,39 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
 }
 
 //MARK: - extension
-extension UILabel {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
+        let index = indexPath.row as Int
+        cell.textLabel?.text = autoComlete[index]
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.autoComlete.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        searchController.searchBar.text = selectedCell.textLabel?.text
+        tableView.isHidden = true
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        tableView.isHidden = false
+        if let substring = (searchController.searchBar.text as? NSString)?.replacingCharacters(in: range, with: text) {
+            searchAutocomleteEntriesWithSubstring(substring)
+            self.blurView.alpha = 1
+        }
+        return true
+    }
+}
+
+extension UILabel {
     func formatterDate( _ dateString: String, _ timeZone: Int) {
         let dateString = dateString
         let formatter = DateFormatter()
