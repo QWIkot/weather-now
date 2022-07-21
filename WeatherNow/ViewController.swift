@@ -172,6 +172,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
         }
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.searchBar.resignFirstResponder()
+        searchController.searchBar.text = ""
+        self.tableView.isHidden = true
+        self.blurView.alpha = 0
+    }
+    
     private func animationLottie (name: String, mode: UIView.ContentMode, frame: CGRect,  view: UIView) {
         animationView = AnimationView(name: name)
         animationView.contentMode = mode
