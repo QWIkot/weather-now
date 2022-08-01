@@ -24,6 +24,7 @@
 		8B8CF2262889E5B9009F6C5D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF2252889E5B9009F6C5D /* Cities.swift */; };
 		8B8CF2282889E5F6009F6C5D /* CityNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF2272889E5F6009F6C5D /* CityNameModel.swift */; };
 		8B8CF22A2889E60F009F6C5D /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B8CF2292889E60F009F6C5D /* cities.json */; };
+		8BD40B272897FDFE005F4BA8 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD40B262897FDFE005F4BA8 /* NetworkMonitor.swift */; };
 		E69FB2268D78658F1CAA5A37 /* Pods_WeatherNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDED3AD4ED5C8F0FA51C2CB /* Pods_WeatherNow.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		8B8CF2252889E5B9009F6C5D /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		8B8CF2272889E5F6009F6C5D /* CityNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNameModel.swift; sourceTree = "<group>"; };
 		8B8CF2292889E60F009F6C5D /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		8BD40B262897FDFE005F4BA8 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				2FBE1108277DDCAA006C3B71 /* NetworkManager.swift */,
+				8BD40B262897FDFE005F4BA8 /* NetworkMonitor.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B8CF2282889E5F6009F6C5D /* CityNameModel.swift in Sources */,
+				8BD40B272897FDFE005F4BA8 /* NetworkMonitor.swift in Sources */,
 				2FBE11112784DF22006C3B71 /* ListOfferModel.swift in Sources */,
 				2FBE1109277DDCAA006C3B71 /* NetworkManager.swift in Sources */,
 				2F3474F627A41997003330B8 /* WindOfferModel.swift in Sources */,

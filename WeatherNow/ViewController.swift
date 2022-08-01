@@ -16,6 +16,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
     @IBOutlet private weak var dayView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var blurView: UIVisualEffectView!
+    @IBOutlet private weak var wifiImageView: UIImageView!
+    @IBOutlet private weak var connectedLabel: UILabel!
+    @IBOutlet private weak var dataView: UIView!
+    @IBOutlet private weak var locationButtonLabel: UIButton!
     
     @IBOutlet private weak var time1Label: UILabel!
     @IBOutlet private weak var time2Label: UILabel!
@@ -79,6 +83,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
         super.viewDidLoad()
         self.setupNavigationBar()
         self.jsonAutoParts()
+        NotificationCenter.default.addObserver(self, selector: #selector(showOfflineDeviceUI(notification:)), name: NSNotification.Name.connectivityStatus, object: nil)
+        NetworkMonitor.shared.startMonitoring()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,6 +183,12 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
         searchController.searchBar.text = ""
         self.tableView.isHidden = true
         self.blurView.alpha = 0
+        if self.offerModel != nil {
+            self.cityLabel.isHidden = false
+            self.tempLabel.isHidden = false
+            self.descriptionlabel.isHidden = false
+            self.imageView.isHidden = false
+        }
     }
     
     private func animationLottie (name: String, mode: UIView.ContentMode, frame: CGRect,  view: UIView) {
@@ -217,6 +229,36 @@ class ViewController: UIViewController, UISearchResultsUpdating, CLLocationManag
             }
         } catch {
             print("Data err")
+        }
+    }
+    
+    @objc func showOfflineDeviceUI(notification: Notification) {
+        if NetworkMonitor.shared.isConnected {
+            DispatchQueue.main.async {
+                self.blurView.alpha = 0
+                self.wifiImageView.isHidden = true
+                self.connectedLabel.isHidden = true
+                self.searchController.searchBar.isHidden = false
+                self.cityView.isHidden = false
+                self.dayView.isHidden = false
+                self.timeView.isHidden = false
+                self.dataView.isHidden = false
+                self.locationButtonLabel.isHidden = false
+                self.stopAnimationLottie()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.blurView.alpha = 1
+                self.wifiImageView.isHidden = false
+                self.connectedLabel.isHidden = false
+                self.searchController.searchBar.isHidden = true
+                self.cityView.isHidden = true
+                self.dayView.isHidden = true
+                self.timeView.isHidden = true
+                self.dataView.isHidden = true
+                self.locationButtonLabel.isHidden = true
+                self.stopAnimationLottie()
+            }
         }
     }
     
@@ -352,6 +394,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         tableView.isHidden = false
+        self.cityLabel.isHidden = true
+        self.tempLabel.isHidden = true
+        self.descriptionlabel.isHidden = true
+        self.imageView.isHidden = true
         if let substring = (searchController.searchBar.text as? NSString)?.replacingCharacters(in: range, with: text) {
             searchAutocomleteEntriesWithSubstring(substring)
             self.blurView.alpha = 1

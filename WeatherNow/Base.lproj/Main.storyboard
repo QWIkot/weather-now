@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,6 +52,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-Xe-7Hs">
@@ -625,9 +627,31 @@
                                             <constraint firstAttribute="height" constant="300" id="vUr-q6-WEA"/>
                                         </constraints>
                                     </view>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g7p-Gl-ppR">
+                                        <rect key="frame" x="157" y="160" width="100" height="98"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="1Bw-Kt-UCE"/>
+                                            <constraint firstAttribute="width" constant="100" id="EOc-DS-i05"/>
+                                        </constraints>
+                                        <imageReference key="image" image="wifi.slash" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                            <hierarchicalColors>
+                                                <color systemColor="labelColor"/>
+                                                <color systemColor="secondaryLabelColor"/>
+                                                <color systemColor="tertiaryLabelColor"/>
+                                            </hierarchicalColors>
+                                        </imageReference>
+                                    </imageView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отсутствует подключение к интернету" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kw9-j8-6pJ">
+                                        <rect key="frame" x="0.0" y="270" width="414" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="WuX-bE-Pef" secondAttribute="trailing" id="0T7-Ar-iwq"/>
+                                    <constraint firstItem="kw9-j8-6pJ" firstAttribute="top" secondItem="g7p-Gl-ppR" secondAttribute="bottom" constant="10" id="DjT-Rb-qGb"/>
                                     <constraint firstItem="QYb-aH-AHG" firstAttribute="leading" secondItem="wKT-Xe-7Hs" secondAttribute="leading" id="LFn-p7-mT1"/>
                                     <constraint firstItem="WuX-bE-Pef" firstAttribute="top" secondItem="AE7-Rd-n2V" secondAttribute="bottom" id="OZS-iv-yTe"/>
                                     <constraint firstAttribute="bottom" secondItem="4e6-fg-deF" secondAttribute="bottom" constant="37" id="Qto-PA-5eG"/>
@@ -635,11 +659,15 @@
                                     <constraint firstAttribute="trailing" secondItem="QYb-aH-AHG" secondAttribute="trailing" id="VPz-oz-qNK"/>
                                     <constraint firstAttribute="trailing" secondItem="AE7-Rd-n2V" secondAttribute="trailing" constant="5" id="XCd-wk-WRk"/>
                                     <constraint firstAttribute="trailing" secondItem="4e6-fg-deF" secondAttribute="trailing" constant="5" id="ad9-2T-EeJ"/>
+                                    <constraint firstItem="g7p-Gl-ppR" firstAttribute="top" secondItem="wKT-Xe-7Hs" secondAttribute="top" constant="160" id="blX-B8-Y1j"/>
                                     <constraint firstItem="4e6-fg-deF" firstAttribute="leading" secondItem="wKT-Xe-7Hs" secondAttribute="leading" constant="5" id="d4m-V5-Pbi"/>
                                     <constraint firstItem="QYb-aH-AHG" firstAttribute="top" secondItem="wKT-Xe-7Hs" secondAttribute="top" id="dc7-Di-6CZ"/>
+                                    <constraint firstItem="kw9-j8-6pJ" firstAttribute="leading" secondItem="wKT-Xe-7Hs" secondAttribute="leading" id="fa7-rr-8sM"/>
                                     <constraint firstItem="4e6-fg-deF" firstAttribute="top" secondItem="WuX-bE-Pef" secondAttribute="bottom" id="pbS-y6-ZZU"/>
+                                    <constraint firstAttribute="trailing" secondItem="kw9-j8-6pJ" secondAttribute="trailing" id="q3H-Kq-CyT"/>
                                     <constraint firstItem="AE7-Rd-n2V" firstAttribute="top" secondItem="QYb-aH-AHG" secondAttribute="bottom" id="tBn-6Y-NPG"/>
                                     <constraint firstItem="WuX-bE-Pef" firstAttribute="leading" secondItem="wKT-Xe-7Hs" secondAttribute="leading" id="xIP-ze-XZy"/>
+                                    <constraint firstItem="g7p-Gl-ppR" firstAttribute="centerX" secondItem="wKT-Xe-7Hs" secondAttribute="centerX" id="yvt-t0-r7C"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -662,16 +690,16 @@
                             <constraint firstAttribute="bottom" secondItem="w2m-C8-JGa" secondAttribute="bottom" id="qqs-C4-MqL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zdj-Fm-8OX">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="SOT-Jc-2Jd">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="obb-YQ-GvG">
+                    <navigationItem key="navigationItem" id="d2J-gg-f50">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="7ip-6e-Q9b">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OGZ-9U-QTt">
                                 <rect key="frame" x="368" y="9.5" width="26" height="25.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <imageReference key="image" image="location" catalog="system" symbolScale="large" renderingMode="hierarchical-single"/>
                                 </state>
                                 <connections>
-                                    <action selector="geoLacationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ya8-hw-Whp"/>
+                                    <action selector="geoLacationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C3B-v8-f33"/>
                                 </connections>
                             </button>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -684,11 +712,13 @@
                         <outlet property="blurView" destination="06G-0Q-Di3" id="l23-ef-cZr"/>
                         <outlet property="cityLabel" destination="SmK-lF-9FS" id="GOj-Px-U7y"/>
                         <outlet property="cityView" destination="QYb-aH-AHG" id="dfh-ZC-D9a"/>
+                        <outlet property="connectedLabel" destination="kw9-j8-6pJ" id="tBE-it-Rtv"/>
                         <outlet property="dataDay1Label" destination="gec-y4-pvs" id="T6R-Ix-s3G"/>
                         <outlet property="dataDay2Label" destination="2Wl-yj-quD" id="0Si-rp-4nv"/>
                         <outlet property="dataDay3Label" destination="uF1-wF-PJW" id="daJ-fT-i1r"/>
                         <outlet property="dataDay4Label" destination="SlM-Tn-gcO" id="1jV-8y-yFF"/>
                         <outlet property="dataDay5Label" destination="sX1-Wh-BqI" id="wfj-jI-AIX"/>
+                        <outlet property="dataView" destination="WuX-bE-Pef" id="CCk-6Q-3j0"/>
                         <outlet property="day1ImageView" destination="lT2-nT-yT4" id="hE8-Jt-eGj"/>
                         <outlet property="day2ImageView" destination="6EY-Wd-82l" id="6ai-r4-33f"/>
                         <outlet property="day3ImageView" destination="LP3-xg-RZa" id="sCf-Zm-qfS"/>
@@ -706,6 +736,7 @@
                         <outlet property="image4View" destination="DFN-4o-0mw" id="Kwt-WD-UjN"/>
                         <outlet property="image5View" destination="bv6-v4-5g8" id="ScX-Ae-FYV"/>
                         <outlet property="imageView" destination="0Zs-7H-Xde" id="hmU-mY-6cB"/>
+                        <outlet property="locationButtonLabel" destination="OGZ-9U-QTt" id="MDo-7L-7ym"/>
                         <outlet property="menuImageView" destination="w2m-C8-JGa" id="Wht-FE-0jD"/>
                         <outlet property="pressureLabel" destination="gv1-Xd-cYC" id="QHQ-mp-Jwt"/>
                         <outlet property="pressureNameLabel" destination="B1P-4H-cmZ" id="3x7-l5-7ID"/>
@@ -727,6 +758,7 @@
                         <outlet property="time4Label" destination="ncf-j1-mgg" id="A4f-XE-Ufp"/>
                         <outlet property="time5Label" destination="udX-vr-QEU" id="Okv-9t-NWX"/>
                         <outlet property="timeView" destination="AE7-Rd-n2V" id="Pbv-zy-bRB"/>
+                        <outlet property="wifiImageView" destination="g7p-Gl-ppR" id="mS4-zh-Twc"/>
                         <outlet property="windLabel" destination="STJ-Nw-4kk" id="FTO-9f-wsB"/>
                         <outlet property="windNameLabel" destination="04a-5O-ImT" id="Jab-bi-FEG"/>
                     </connections>
@@ -738,5 +770,15 @@
     </scenes>
     <resources>
         <image name="location" catalog="system" width="128" height="118"/>
+        <image name="wifi.slash" catalog="system" width="128" height="102"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
